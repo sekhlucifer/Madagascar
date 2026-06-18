@@ -1,0 +1,448 @@
+Analysis of Methods in TOI-space-TOI_Project\src\main\java\com\framework
+=========================================================================
+
+File: annotations\JIRA.java
+---------------------------
+  (No methods found or interface)
+
+File: annotations\TestGroups.java
+---------------------------------
+  - private TestGroups() {}
+
+File: browser\BrowserFactory.java
+---------------------------------
+  - public Browser launch(Playwright playwright)
+  - public Browser launch(Playwright playwright)
+  - public Browser launch(Playwright playwright)
+  - public Browser launch(Playwright playwright)
+  - public Browser launch(Playwright playwright)
+  - public abstract Browser launch(Playwright playwright);
+  - private static int nextDebugPort()
+  - private static LaunchOptions defaultOptions()
+  - public static BrowserFactory from(String browserName)
+
+File: browser\BrowserManager.java
+---------------------------------
+  - private BrowserManager() {}
+  - public static void initPlaywright()
+  - public static Playwright getPlaywright()
+  - public static void initBrowser(String browserName)
+  - public static Browser getBrowser()
+  - public static void initContext()
+  - public static BrowserContext getContext()
+  - public static void initPage()
+  - public static Page getPage()
+  - public static void setPage(Page page)
+  - public static void closeAll()
+  - private static <T> void closeSafely(T obj, Closer<T> closer, ThreadLocal<T> tl)
+  - private static void prepareTemporaryProfile(String sourceUserDataDir, String profileName, String tempUserDataDir)
+  - private static void copyRecursive(File source, File destination) throws IOException
+  - private static String resolveEnvVars(String input)
+
+File: config\Configuration.java
+-------------------------------
+  (No methods found or interface)
+
+File: config\ConfigurationManager.java
+--------------------------------------
+  - private ConfigurationManager() {}
+  - public static Configuration config()
+
+File: config\TestData.java
+--------------------------
+  (No methods found or interface)
+
+File: config\TestDataManager.java
+---------------------------------
+  - private TestDataManager() {}
+  - public static TestData testData()
+
+File: context\TestContext.java
+------------------------------
+  - private TestContext() {}
+  - public static void put(String key, Object value)
+  - public static Object get(String key)
+  - public static String getString(String key)
+  - public static <T> T getAs(String key)
+  - public static boolean contains(String key)
+  - public static void clear()
+  - public static void remove()
+
+File: enums\BrowserType.java
+----------------------------
+  - public String getValue() { return value; }
+  - public String toString() { return value; }
+
+File: enums\Environment.java
+----------------------------
+  - public String getValue() { return value; }
+  - public String toString() { return value; }
+  - public static Environment current()
+
+File: enums\WaitStrategy.java
+-----------------------------
+  (No methods found or interface)
+
+File: exceptions\AutomationException.java
+-----------------------------------------
+  - public AutomationException(String message)
+  - public AutomationException(String message, Throwable cause)
+
+File: exceptions\ElementNotFoundException.java
+----------------------------------------------
+  - public ElementNotFoundException(String selector)
+  - public ElementNotFoundException(String selector, int timeoutSeconds)
+
+File: listeners\RetryAnalyzer.java
+----------------------------------
+  - public boolean retry(ITestResult result)
+
+File: listeners\RetryTransformer.java
+-------------------------------------
+  (No methods found or interface)
+
+File: listeners\TestListener.java
+---------------------------------
+  - public void onStart(ISuite suite)
+  - public void onFinish(ISuite suite)
+  - public void onStart(ITestContext ctx)
+  - public void onFinish(ITestContext ctx)
+  - public void onTestStart(ITestResult result)
+  - public void onTestSuccess(ITestResult result)
+  - public void onTestFailure(ITestResult result)
+  - public void onTestSkipped(ITestResult result)
+  - public void onTestFailedButWithinSuccessPercentage(ITestResult result)
+  - private static com.aventstack.extentreports.model.Media screenshotMedia(String name)
+  - private static void logDuration(ITestResult result)
+  - private static String uniqueKey(ITestResult r)
+
+File: pages\BasePage.java
+-------------------------
+  - protected Page page()
+  - public Locator getFirstElement(String xpath)
+  - public void handleMicrosoftLoginBypass()
+  - public void navigateTo(String url)
+  - public void navigateToApp()
+  - public void goBack()
+  - public void scrollToTop()
+  - public void scrollIntoView(String xpath)
+  - public void reloadPage()
+  - public void waitForPageLoad()
+  - public void waitForPageToLoad()
+  - public void universalWait()
+  - public void universalWait(String xpath)
+  - public void universalWait(Locator locator)
+  - public void waitForLoadingSpinner()
+  - public static void staticWait(int seconds)
+  - public boolean waitForElement(String xpath)
+  - public boolean waitForElement(String xpath, int timeoutSeconds)
+  - public boolean waitForElement(Locator locator)
+  - public boolean waitForElement(Locator locator, int timeoutSeconds)
+  - public void waitForElementDetached(String xpath)
+  - public void waitForElementDetached(String xpath, int timeoutSeconds)
+  - public boolean isClickable(String xpath)
+  - public boolean isClickable(Locator locator)
+  - public void click(String xpath)
+  - public void clickForce(String xpath)
+  - public void click(Locator locator)
+  - public void clickJs(String cssSelector)
+  - public void hover(String xpath)
+  - public void fill(String xpath, String value)
+  - public String getValue(String xpath)
+  - public void fill(Locator locator, String value)
+  - public void clearField(String xpath)
+  - public void clearField(Locator locator)
+  - public void typeSlowly(String xpath, String value)
+  - public String getText(String xpath)
+  - public List<String> getAllTextContents(String xpath)
+  - public String getInputValue(String xpath)
+  - public void pressKey(String key)
+  - public boolean isVisible(String xpath)
+  - public boolean isEnabled(String xpath)
+  - public boolean isElementPresent(String xpath)
+  - public boolean isTextPresentOnPage(String text)
+  - public void captureScreenshot(String name)
+  - public void captureFullPageScreenshot(String name)
+  - public byte[] captureScreenshotBytes()
+  - public void attachScreenshotToReport(String methodName)
+  - public boolean verifyAlertMessage(String... expectedMessages)
+  - public void verifyErrorMessage(String message)
+  - public void verifyMandatoryFieldError(String... fields)
+  - public void dismissFormChanges()
+  - public void selectFromSearchableDropdown(String fieldName, String value)
+  - public void selectFromDropdown(String fieldName, String value)
+  - public boolean downloadFile(String triggerXpath)
+  - public List<String> getAllGridHeaders()
+  - public String getGridCellValue(int rowIndex, String colId)
+  - public int getGridRowCount()
+  - public void scrollGridTo(int xPosition)
+  - private void scrollGridStepRight()
+  - private int getHorizontalScrollSteps()
+  - public void openFilterPanel()
+  - public void applyFilter()
+  - public void clearAllFilters()
+  - public void advancedFilter(Map<String, String> fieldValueMap)
+  - public void advancedFilter(Map<String, String> fieldValueMap, boolean isAnd)
+  - private void setCardCondition(boolean isAnd)
+  - private void fillFilterFields(Map<String, String> fieldValueMap)
+  - public void quickFilter(String fieldLabel, String fieldValue)
+  - public String getCurrentPageSize()
+  - public void setPageSize(String size)
+  - public List<String> getAvailablePageSizes()
+  - public int getDisplayedRowCount()
+  - public int selectRows(int count)
+  - public void verifyModuleHeader(String headerName)
+  - public void verifyColumnPresent(String... columnNames)
+  - public void clickOkButton()
+  - public void clickYesButton()
+  - public void clickSaveButton()
+  - public void clickCancelButton()
+  - public void pause()
+  - public static String randomAlpha(int length)
+  - public static String randomNumeric(int length)
+  - public String getAttribute(String locator, String attribute)
+  - public Locator getByRole(com.microsoft.playwright.options.AriaRole role, String name)
+  - public Locator getByText(String text)
+  - public Locator getById(String id)
+  - public void highlightElement(String selector)
+  - public void highlightElement(Locator locator)
+  - public void scrollIntoView(Locator locator)
+  - public String getText(Locator locator)
+  - public boolean isVisible(Locator locator)
+  - public boolean isElementPresent(Locator locator)
+
+File: pages\ClinicalInformationPage.java
+----------------------------------------
+  - public void click_continue_to_pathway()
+  - public boolean isContinueToPathwayButtonVisible()
+  - public void highlightContinueToPathwayButton()
+  - public void scrollToContinueToPathwayButton()
+  - public void highlightCurrentpage()
+  - public String getCurrentPageText()
+  - public void scrollToCurrentPageText()
+
+File: pages\OrderDetailsPage.java
+---------------------------------
+  - public void check_ordernumber()
+  - public void check_regimens_details(String r1, String r2, String r3, String r4)
+  - public void click_view_details()
+  - public boolean areCancelAndUsePathwayButtonsVisible()
+  - public void check_Cancel_Use_Pathway()
+  - public void click_Use_Pathway()
+  - public void Verify_drugs(String d1Name, String d2Name, String d3Name, String d4Name)
+  - public void highlight_table_drugs()
+  - public void highlightDrugs_Card()
+  - public void add_Drugs(String addDrugs, String commentText)
+  - public void verify_AddDrugs(String addedDrugName)
+  - public void newly_add_drugs()
+  - public void check_approval(String expectedStatus)
+  - public void edit_Drugs_dose(String newDose)
+  - public void delete_drug()
+  - public void verify_remove_action()
+  - public void move_to_supportive_drug_page()
+  - public void check_strikethrough_is_visible()
+  - public void check_grey_text_is_visible()
+  - public void restore_icon()
+  - public void scrollToOrderNumber()
+  - public void scrollToRegimenDetails()
+  - public void scrollToRegimenPopup()
+  - public void scrollToTableDrugs()
+  - public void scrollToRemoveAction()
+  - public void highlightCurrentpage()
+  - public void highlightregimecard()
+
+File: pages\OrderListingPage.java
+---------------------------------
+  - public OrderListingPage open()
+  - public void clickCreateOrder()
+  - public void login()
+  - public void verify_orderlist_page(String mrn, String description)
+  - public void verify_redirection_to_order_listing()
+  - public void verify_status()
+  - public void click_mrn_hyperlink()
+  - public void logout()
+  - public void scrollToOrderlistStatus()
+
+File: pages\PatientDetailsPage.java
+-----------------------------------
+  - public String getCurrentPageText()
+  - public void clickFinalCreateOrder()
+  - public void scrollToCurrentPageText()
+  - public void highlightCurrentpage()
+
+File: pages\SearchPatientPage.java
+----------------------------------
+  - public void enterMRN(String mrn)
+  - public void clickSearchPatient()
+  - public String getCellXpath(String value)
+  - public String getPatientResultMRN(String mrn)
+  - public void highlightMRNInput()
+  - public void highlightSearchBtn()
+  - public void highlightResult(String mrn)
+  - public boolean isViewDetailsButtonVisible()
+  - public boolean isCreateOrderButtonVisible()
+  - public void highlightActionButtons()
+  - public void clickViewDetails()
+  - public void clickCreateOrderInResult()
+  - public void verifyPatientDetailFieldVisible1()
+  - public void highlightPatientDetailsField()
+  - public void scrollToViewDetailsButton()
+  - public void scrollToCreateOrderButton()
+  - public void scrollToPatientDetailsField()
+
+File: pages\SupportiveDrugsPage.java
+------------------------------------
+  - public void verify_supportive_drug_page()
+  - public void add_Drugs(String addDrugs, String commentText)
+  - public void add_suppotive_drug(String drugName)
+  - public void newly_add_drugs()
+  - public void check_approval1(String expectedStatus)
+  - public void edit_Supportive_drug_dose(String doseValue)
+  - public void verify_supportive_drug_dose(String expectedDose)
+  - public void delete_supportive_drug()
+  - public void verify_supportive_remove_action()
+  - public void check_strikethrough_is_visible()
+  - public void check_grey_text_is_visible()
+  - public void submit_order()
+  - public void check_submit_popup()
+  - public void scrollToSubmitSupportiveDrug()
+  - public void highlightCurrentpage()
+
+File: reporting\ExtentManager.java
+----------------------------------
+  - private ExtentManager()
+  - public static String getReportFilePath()
+  - public static ExtentReports getInstance()
+  - public static ExtentReports getInstance(String suiteName)
+  - public static void flush()
+  - private static ExtentReports createInstance(String suiteName)
+
+File: reporting\ExtentReport.java
+---------------------------------
+  - private ExtentReport() {}
+  - public static ExtentTest createTest(String name, String description)
+  - public static ExtentTest createTest(String name)
+  - public static ExtentTest getTest()
+  - public static void remove()
+
+File: tests\BaseTest.java
+-------------------------
+  - public void beforeSuite()
+  - public void afterSuite()
+  - public void afterMethod(ITestResult result)
+  - private void captureAndSaveScreenshot(String testName)
+  - private static String statusLabel(int status)
+
+File: utils\Assertion.java
+--------------------------
+  - private Assertion() {}
+  - public static void assertTrue(boolean condition, String message)
+  - public static void assertFalse(boolean condition, String message)
+  - public static void assertEquals(Object actual, Object expected, String message)
+  - public static void assertNotNull(Object obj, String message)
+  - public static void assertNull(Object obj, String message)
+  - public static void assertContains(String actual, String expected, String message)
+  - public static SoftAssert softAssert()
+  - public static void softTrue(SoftAssert sa, boolean condition, String message)
+  - public static void softEquals(SoftAssert sa, Object actual, Object expected, String message)
+  - public static void assertAll(SoftAssert sa)
+
+File: utils\DateUtil.java
+-------------------------
+  - private DateUtil()
+  - public static String today()
+  - public static String dateWithOffset(int daysOffset)
+  - public static String isoDate(int daysOffset)
+  - public static String timestamp()
+  - public static boolean isBetween(String from, String to, String dateStr)
+  - public static boolean isValidDate(String date)
+
+File: utils\DBUtil.java
+-----------------------
+  - private DBUtil() {}
+  - public static List<Map<String, String>> executeQuery(String sql, Object... params)
+  - public static int executeUpdate(String sql, Object... params)
+  - private static Connection getConnection() throws SQLException
+  - private static PreparedStatement prepare(Connection conn, String sql, Object[] params)
+
+File: utils\ExcelUtil.java
+--------------------------
+  - private ExcelUtil() {}
+  - public static List<Map<String, String>> readSheet(String filePath, String sheetName)
+  - private static String getCellValue(Cell cell)
+
+File: utils\FileUtil.java
+-------------------------
+  - private FileUtil() {}
+  - public static void mkdirs(String dirPath)
+  - public static File latestFile(String dirPath, String... extensions)
+  - public static String readText(String filePath)
+  - public static void writeText(String filePath, String content)
+  - public static void cleanDir(String dirPath)
+  - public static List<File> listFiles(String dirPath, String extension)
+
+File: utils\JsonUtil.java
+-------------------------
+  - private JsonUtil() {}
+  - public static <T> T readFile(String filePath, Class<T> type)
+  - public static Map<String, Object> readFile(String filePath)
+  - public static <T> T readFile(String filePath, TypeReference<T> ref)
+  - public static String toJson(Object obj)
+  - public static <T> T fromJson(String json, Class<T> type)
+  - public static Map<String, Object> toMap(Object obj)
+
+File: utils\LogUtils.java
+-------------------------
+  - private LogUtils() {}
+  - public static void info(String message)
+  - public static void pass(String message)
+  - public static void fail(String message)
+  - public static void warn(String message)
+  - public static void skip(String message)
+  - public static void error(String message)
+  - public static void error(String message, Throwable t)
+  - public static void debug(String message)
+  - private static void safeExtent(Runnable action)
+
+File: utils\RandomDataUtil.java
+-------------------------------
+  - private RandomDataUtil() {}
+  - public static String alpha(int length)
+  - public static String lower(int length)
+  - public static String numericString(int length)
+  - public static String alphanumeric(int length)
+  - public static int intBetween(int min, int max)
+  - public static String uuid()
+  - public static String email()
+  - public static String phone()
+  - public static String containerNumber()
+  - private static String build(String chars, int length)
+
+File: utils\RestClient.java
+---------------------------
+  - public RestClient(String baseUrl, String bearerToken)
+  - public RestClient(String bearerToken)
+  - public Response get(String path)
+  - public Response get(String path, Map<String, ?> queryParams)
+  - public Response post(String path, Object body)
+  - public Response put(String path, Object body)
+  - public Response patch(String path, Object body)
+  - public Response delete(String path)
+  - private RequestSpecification spec()
+
+File: utils\WaitUtil.java
+-------------------------
+  - private WaitUtil()
+  - private static Page page()
+  - public static boolean waitForElement(String xpath, int timeoutMs)
+  - public static boolean waitForVisible(String xpath, int timeoutMs)
+  - public static boolean waitForHidden(String xpath, int timeoutMs)
+  - public static boolean waitUntil(Locator locator, java.util.function.Predicate<Locator> condition, int timeoutMs)
+  - public static void waitForLoadingScreen()
+  - public static void waitForLoadingScreen(String xpath, int maxWaitSeconds)
+  - public static void waitForLoadingText(String text, int maxWaitSeconds)
+  - public static void waitForLoadingText()
+  - public static void sleep(int seconds)
+  - public static boolean waitForNetworkIdle(int timeoutMs)
+  - public static boolean waitForNetworkIdle()
+

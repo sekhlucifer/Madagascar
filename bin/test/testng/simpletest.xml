@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SimpleTest Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.framework.listeners.TestListener"/>
+    </listeners>
+    <test name="Simple Tests">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="env" value="qa"/>
+        <classes>
+            <class name="com.framework.tests.PatientLookupTests">
+                <methods>
+                    <include name="TestCaseIDUM_PD_SP_FN_001"/>
+                    <include name="TestCaseIDUM_PD_SP_FN_002"/>
+                    <include name="TestCaseIDUM_PD_SP_FN_003"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

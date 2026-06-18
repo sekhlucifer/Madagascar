@@ -1,0 +1,141 @@
+plugins {
+    id 'java'
+}
+
+group 'com.framework'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+// ─── Dependency Versions ────────────────────────────────────────────────────
+ext {
+    playwrightVersion  = '1.50.0'
+    testngVersion      = '7.9.0'
+    extentVersion      = '5.0.9'
+    ownerVersion       = '1.0.12'
+    lombokVersion      = '1.18.30'
+    log4jVersion       = '2.20.0'
+    jacksonVersion     = '2.18.0'
+    restAssuredVersion = '5.4.0'
+    poiVersion         = '5.2.5'
+    mysqlVersion       = '8.0.33'
+    jschVersion        = '0.2.16'
+}
+
+dependencies {
+    // ── Playwright ──────────────────────────────────────────────────────────
+    implementation "com.microsoft.playwright:playwright:${playwrightVersion}"
+
+    // ── TestNG ──────────────────────────────────────────────────────────────
+    implementation "org.testng:testng:${testngVersion}"
+
+    // ── Reporting ───────────────────────────────────────────────────────────
+    implementation "com.aventstack:extentreports:${extentVersion}"
+
+    // ── Config Management ───────────────────────────────────────────────────
+    implementation "org.aeonbits.owner:owner:${ownerVersion}"
+
+    // ── Lombok ──────────────────────────────────────────────────────────────
+    compileOnly     "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // ── Logging ─────────────────────────────────────────────────────────────
+    implementation "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+    implementation "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+    implementation 'org.slf4j:slf4j-api:2.0.6'
+
+    // ── REST / API ──────────────────────────────────────────────────────────
+    implementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${jacksonVersion}"
+
+    // ── Excel / PDF ─────────────────────────────────────────────────────────
+    implementation "org.apache.poi:poi:${poiVersion}"
+    implementation "org.apache.poi:poi-ooxml:${poiVersion}"
+    implementation 'org.apache.pdfbox:pdfbox:2.0.30'
+
+    // ── Database ────────────────────────────────────────────────────────────
+    implementation "mysql:mysql-connector-java:${mysqlVersion}"
+
+    // ── Utilities ───────────────────────────────────────────────────────────
+    implementation 'commons-beanutils:commons-beanutils:1.9.4'
+    implementation 'org.apache.commons:commons-csv:1.11.0'
+    implementation 'org.json:json:20231013'
+
+    // ── OAuth2 ──────────────────────────────────────────────────────────────
+    implementation 'com.nimbusds:oauth2-oidc-sdk:11.13'
+}
+
+// ─── Test Configuration ──────────────────────────────────────────────────────
+test {
+    useTestNG {
+        suites System.getProperty("suite", "src/test/resources/testng/testng.xml")
+        if (System.getProperty("groups") != null) {
+            includeGroups System.getProperty("groups").split(",")
+        }
+        if (System.getProperty("threads") != null) {
+            options.setThreadCount(Integer.parseInt(System.getProperty("threads")))
+            // If threads=1, disable parallel execution completely
+            if (System.getProperty("threads") == "1") {
+                options.setParallel("none")
+            }
+        }
+    }
+    systemProperty 'env', System.getProperty('env', 'qa')
+    systemProperty 'browser', System.getProperty('browser', 'chrome')
+    systemProperty 'headless', System.getProperty('headless', 'false')
+    environment 'PW_TEST_SCREENSHOT_NO_FONTS_READY', '1'
+
+    if (System.getProperty('browser.persistent') != null) {
+        systemProperty 'browser.persistent', System.getProperty('browser.persistent')
+    }
+    if (System.getProperty('browser.user.data.dir') != null) {
+        systemProperty 'browser.user.data.dir', System.getProperty('browser.user.data.dir')
+    }
+    if (System.getProperty('browser.profile.name') != null) {
+        systemProperty 'browser.profile.name', System.getProperty('browser.profile.name')
+    }
+
+
+    // Print test results and statistics directly in the terminal
+    testLogging {
+        events "passed", "skipped", "failed"
+        showExceptions true
+        exceptionFormat "full"
+        showCauses true
+        showStackTraces true
+        showStandardStreams = true
+    }
+
+    // Add a beautiful summary at the end of the suite
+    afterSuite { desc, result ->
+        if (!desc.parent) { // matches the root suite
+            println "\n========================================================================"
+            println "                         TEST EXECUTION SUMMARY                         "
+            println "========================================================================"
+            println "  RESULT       : " + result.resultType
+            println "  TOTAL TESTS  : " + result.testCount
+            println "  PASSED       : " + result.successfulTestCount + "  [PASS]"
+            println "  FAILED       : " + result.failedTestCount + "  [FAIL]"
+            println "  SKIPPED      : " + result.skippedTestCount + "  [SKIP]"
+            println "========================================================================"
+            if (result.failedTestCount > 0) {
+                println "  STATUS       : SOME TESTS FAILED"
+            } else {
+                println "  STATUS       : ALL TESTS PASSED"
+            }
+            println "========================================================================\n"
+        }
+    }
+}
+
+// ─── Source Encoding ────────────────────────────────────────────────────────
+compileJava.options.encoding   = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+// ─── Gradle Parallel / Incremental Builds ───────────────────────────────────
+tasks.withType(Test).configureEach {
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}

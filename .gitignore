@@ -1,0 +1,32 @@
+# ── Build ────────────────────────────────────────────────────────────────────
+build/
+.gradle/
+out/
+
+# ── Reports & Artefacts ──────────────────────────────────────────────────────
+reports/
+dumpDownload/
+*.png
+*.pdf
+
+# ── IDE ──────────────────────────────────────────────────────────────────────
+.idea/
+*.iml
+.vscode/
+*.class
+
+# ── Credentials (NEVER commit these) ────────────────────────────────────────
+configs/**/config.properties
+!configs/common_config.properties
+!configs/qa/config.properties.template
+secrets.properties
+.env
+
+# ── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Playwright browser cache ─────────────────────────────────────────────────
+~/.cache/ms-playwright/
+.automation-profile-cache/
+
